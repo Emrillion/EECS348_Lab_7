@@ -1,4 +1,3 @@
-// Use file instead of stdin for input, and file instead of stdout for output
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +12,7 @@ private:
 
 public:
   // 1. Read values from stdin into a matrix
-  void readFromStdin() {
+  int readFromStdin() {
     // get the filepath
     string filePath = "matrix-data.txt";
 
