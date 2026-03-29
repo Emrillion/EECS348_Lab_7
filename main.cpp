@@ -11,22 +11,8 @@ private:
   int data[SIZE][SIZE];  // 2D array for matrix data (using int for simplicity)
 
 public:
-  // 1. Read values from stdin into a matrix
-  int readFromStdin() {
-    // get the filepath
-    string filePath = "matrix-data.txt";
-
-    // Open the file using ifstream
-    ifstream file(filePath);
-
-    // confirm file opening
-    if (!file.is_open()) {
-        // print error message and return
-        cerr << "Failed to open file: " << filePath << endl;
-
-        return 1;
-    }
-
+  // 1. Read values from file into a matrix
+  int readFromFile(ifstream& file) {
     // Read values from the file into the matrix
     for (int i = 0; i < SIZE; ++i) {
       for (int j = 0; j < SIZE; ++j) {
@@ -34,8 +20,6 @@ public:
       }
     }
     
-    file.close();
-
     return 0;
   }
 
@@ -94,15 +78,28 @@ public:
 };
 
 int main() {
+  // get the filepath
+  string filePath = "matrix-data.txt";
+
+  // Open the file
+  ifstream file(filePath);
+
+  // confirm file opening
+  if (!file.is_open()) {
+      // print error message and return
+      cerr << "Failed to open file: " << filePath << endl;
+      return 1;
+  }
+
   // Get and display Matrix 1
   Matrix mat1;
-  mat1.readFromStdin();
+  mat1.readFromFile(file);
   cout << "Matrix 1:" << endl;
   mat1.display();
 
   // Get and display Matrix 2
   Matrix mat2;
-  mat2.readFromStdin();
+  mat2.readFromFile(file);
   cout << "Matrix 2:" << endl;
   mat2.display();
 
@@ -121,6 +118,8 @@ int main() {
   mat1.swapRows(0, 2);
   cout << "Matrix 1 after swapping rows:" << endl;
   mat1.display();
+
+  file.close();
 
   return 0;
 }
