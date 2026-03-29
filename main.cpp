@@ -94,23 +94,24 @@ public:
 };
 
 int main() {
-  // Example usage:
+  // Get and display Matrix 1
   Matrix mat1;
-  cout << "Enter values for Matrix 1:" << endl;
   mat1.readFromStdin();
   cout << "Matrix 1:" << endl;
   mat1.display();
 
+  // Get and display Matrix 2
   Matrix mat2;
-  cout << "Enter values for Matrix 2:" << endl;
   mat2.readFromStdin();
   cout << "Matrix 2:" << endl;
   mat2.display();
 
+  // Do matrix addition
   Matrix sum = mat1 + mat2;
   cout << "Sum of matrices:" << endl;
   sum.display();
 
+  // Do matrix multiplication
   Matrix product = mat1 * mat2;
   cout << "Product of matrices:" << endl;
   product.display();
