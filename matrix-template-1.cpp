@@ -1,4 +1,7 @@
+// Use file instead of stdin for input, and file instead of stdout for output
 #include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -10,7 +13,32 @@ private:
 
 public:
   // 1. Read values from stdin into a matrix
-  void readFromStdin();
+  void readFromStdin() {
+    // get the filepath
+    string filePath = "matrix-data.txt";
+
+    // Open the file using ifstream
+    ifstream file(filePath);
+
+    // confirm file opening
+    if (!file.is_open()) {
+        // print error message and return
+        cerr << "Failed to open file: " << filePath << endl;
+
+        return 1;
+    }
+
+    // Read values from the file into the matrix
+    for (int i = 0; i < SIZE; ++i) {
+      for (int j = 0; j < SIZE; ++j) {
+        file >> data[i][j];
+      }
+    }
+    
+    file.close();
+
+    return 0;
+  }
 
   // 2. Display a matrix
   void display() const{
