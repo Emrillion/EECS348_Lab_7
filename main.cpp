@@ -75,10 +75,22 @@ public:
   }
 
   // 5. Compute the sum of matrix diagonal elements
-  int sumOfDiagonals() const;
+  int sumOfDiagonals() const {
+    int sum = 0;
+    for (int i = 0; i < SIZE; ++i) {
+      sum += data[i][i]; // Add the main diagonal element
+    }
+    return sum;
+  }
 
   // 6. Swap matrix rows
-  void swapRows(int row1, int row2);
+  void swapRows(int row1, int row2) {
+    for (int j = 0; j < SIZE; ++j) {
+      int temp = data[row1][j];
+      data[row1][j] = data[row2][j];
+      data[row2][j] = temp;
+    }
+  }
 };
 
 int main() {
