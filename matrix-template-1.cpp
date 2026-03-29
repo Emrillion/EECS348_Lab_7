@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 using namespace std;
@@ -14,7 +13,14 @@ public:
   void readFromStdin();
 
   // 2. Display a matrix
-  void display() const;
+  void display() const{
+    for (int i = 0; i < SIZE; ++i) {
+      for (int j = 0; j < SIZE; ++j) {
+        cout << data[i][j] << " ";
+      }
+      cout << endl;
+    }
+  }
 
   // 3. Add two matrices (operator overloading for +)
   Matrix operator+(const Matrix& other) const;
